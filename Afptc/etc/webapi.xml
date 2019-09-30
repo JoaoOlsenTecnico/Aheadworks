@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <!-- Managing Afptc Rule Repository -->
+    <route url="/V1/awAfptcRule/get/:ruleId" method="GET">
+        <service class="Aheadworks\Afptc\Api\RuleRepositoryInterface" method="get"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/save" method="PUT">
+        <service class="Aheadworks\Afptc\Api\RuleRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/list" method="GET">
+        <service class="Aheadworks\Afptc\Api\RuleRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/deleteById/:ruleId" method="DELETE">
+        <service class="Aheadworks\Afptc\Api\RuleRepositoryInterface" method="deleteById"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/delete" method="POST">
+        <service class="Aheadworks\Afptc\Api\RuleRepositoryInterface" method="delete"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+
+    <!-- Managing Afptc Rule for Customer -->
+    <route url="/V1/awAfptcRule/getAutoAddMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\RuleManagementInterface" method="getAutoAddMetadataRules"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/getPopUpMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\RuleManagementInterface" method="getPopUpMetadataRules"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/getDiscountMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\RuleManagementInterface" method="getDiscountMetadataRules"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcRule/isValidCoupon" method="POST">
+        <service class="Aheadworks\Afptc\Api\RuleManagementInterface" method="isValidCoupon"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <!-- Managing Afptc Rule for Guest -->
+    <route url="/V1/awAfptcGuestRule/getAutoAddMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\GuestRuleManagementInterface" method="getAutoAddMetadataRules"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcGuestRule/getPopUpMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\GuestRuleManagementInterface" method="getPopUpMetadataRules"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcGuestRule/getDiscountMetadataRules" method="POST">
+        <service class="Aheadworks\Afptc\Api\GuestRuleManagementInterface" method="getDiscountMetadataRules"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcGuestRule/isValidCoupon" method="POST">
+        <service class="Aheadworks\Afptc\Api\GuestRuleManagementInterface" method="isValidCoupon"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Managing Afptc Promo Offer Render -->
+    <route url="/V1/awAfptcPromoOfferRender/getList" method="POST">
+        <service class="Aheadworks\Afptc\Api\PromoOfferRenderListInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Managing Afptc Promo Info Block -->
+    <route url="/V1/awAfptcPromoInfoBlock/getList" method="POST">
+        <service class="Aheadworks\Afptc\Api\PromoInfoBlockRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Managing Afptc Cart -->
+    <route url="/V1/awAfptcCart/addPromoProducts" method="PUT">
+        <service class="Aheadworks\Afptc\Api\CartManagementInterface" method="addPromoProducts"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcCart/removeUnusedPromoData" method="PUT">
+        <service class="Aheadworks\Afptc\Api\CartManagementInterface" method="removeUnusedPromoData"/>
+        <resources>
+            <resource ref="self"/>
+        </resources>
+    </route>
+
+    <!-- Managing Guest Afptc Cart -->
+    <route url="/V1/awAfptcGuestCart/addPromoProducts" method="PUT">
+        <service class="Aheadworks\Afptc\Api\GuestCartManagementInterface" method="addPromoProducts"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/awAfptcGuestCart/removeUnusedPromoData" method="PUT">
+        <service class="Aheadworks\Afptc\Api\GuestCartManagementInterface" method="removeUnusedPromoData"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+
+    <!-- Index Management -->
+    <route url="/V1/awAfptcIndex/invalidateIndexOnDataChange" method="POST">
+        <service class="Aheadworks\Afptc\Api\IndexManagementInterface" method="invalidateIndexOnDataChange"/>
+        <resources>
+            <resource ref="Aheadworks_Afptc::rules"/>
+        </resources>
+    </route>
+</routes>

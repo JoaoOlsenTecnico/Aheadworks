@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="header-wrapper">
+            <block class="Magento\Framework\View\Element\Template" name="aw-afptc.promo-offer.link" after="minicart"
+                   template="Aheadworks_Afptc::promo/link.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="awAfptcPromoOffer" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/view/promo-offer</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">awAfptcPromoOfferProvider</item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+        <referenceContainer name="before.body.end">
+            <block class="Magento\Framework\View\Element\Template" name="aw-afptc.promo-offer.product.list"
+                   template="Aheadworks_Afptc::promo/product/list.phtml">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="awAfptcPromoProducts" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products</item>
+                                <item name="deps" xsi:type="array">
+                                    <item name="0" xsi:type="string">awAfptcPromoOfferProvider</item>
+                                </item>
+                                <item name="productConfig" xsi:type="array">
+                                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/product</item>
+                                    <item name="parent" xsi:type="string">${ $.name }</item>
+                                    <item name="provider" xsi:type="string">${ $.provider }</item>
+                                    <item name="optionsConfig" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/product/options-renderer/default</item>
+                                        <item name="provider" xsi:type="string">${ $.provider }</item>
+                                    </item>
+                                    <item name="loaderStatusConfig" xsi:type="array">
+                                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/loaderStatus</item>
+                                        <item name="defaultDeps" xsi:type="array">
+                                            <item name="0" xsi:type="string">image</item>
+                                            <item name="1" xsi:type="string">price</item>
+                                        </item>
+                                    </item>
+                                    <item name="rendererList" xsi:type="array">
+                                        <item name="configurable" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/product/options-renderer/configurable</item>
+                                            <item name="provider" xsi:type="string">${ $.provider }</item>
+                                            <item name="attributeFieldConfig" xsi:type="array">
+                                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/product/options-renderer/configurable/field/select</item>
+                                                <item name="provider" xsi:type="string">${ $.provider }</item>
+                                                <item name="template" xsi:type="string">ui/form/field</item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                    <item name="children" xsi:type="array">
+                                        <item name="image" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">image</item>
+                                            <item name="component" xsi:type="string">Magento_Catalog/js/view/image</item>
+                                            <item name="template" xsi:type="string">Magento_Catalog/product/image</item>
+                                        </item>
+                                        <item name="price" xsi:type="array">
+                                            <item name="displayArea" xsi:type="string">price</item>
+                                            <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/price-box</item>
+                                            <item name="template" xsi:type="string">Magento_Catalog/product/price/price_box</item>
+                                            <item name="provider" xsi:type="string">${ $.provider }</item>
+                                            <item name="renders" xsi:type="array">
+                                                <item name="prices" xsi:type="array">
+                                                    <item name="default" xsi:type="array">
+                                                        <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/pricetype-box</item>
+                                                        <item name="template" xsi:type="string">Magento_Catalog/product/final_price</item>
+                                                        <item name="children" xsi:type="array">
+                                                            <item name="special_price" xsi:type="array">
+                                                                <item name="label" xsi:type="string" translate="true">Special Price</item>
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Magento_Catalog/product/price/special_price</item>
+                                                                <item name="sortOrder" xsi:type="number">1</item>
+                                                            </item>
+                                                            <item name="regular_price" xsi:type="array">
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Aheadworks_Afptc/components/promo-products/product/price/regular_price</item>
+                                                                <item name="sortOrder" xsi:type="number">2</item>
+                                                            </item>
+                                                            <item name="minimal_price" xsi:type="array">
+                                                                <item name="label" xsi:type="string" translate="true"/>
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Magento_Catalog/product/price/minimal_price</item>
+                                                                <item name="sortOrder" xsi:type="number">3</item>
+                                                            </item>
+                                                            <item name="minimal_regular_price" xsi:type="array">
+                                                                <item name="label" xsi:type="string" translate="true">Regular Price</item>
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Magento_Catalog/product/price/minimal_regular_price</item>
+                                                                <item name="sortOrder" xsi:type="number">4</item>
+                                                            </item>
+                                                            <item name="max_price" xsi:type="array">
+                                                                <item name="label" xsi:type="string" translate="true"/>
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Magento_Catalog/product/price/max_price</item>
+                                                                <item name="sortOrder" xsi:type="number">5</item>
+                                                            </item>
+                                                            <item name="max_regular_price" xsi:type="array">
+                                                                <item name="label" xsi:type="string" translate="true">Regular Price</item>
+                                                                <item name="component" xsi:type="string">Magento_Catalog/js/product/list/columns/final-price</item>
+                                                                <item name="bodyTmpl" xsi:type="string">Magento_Catalog/product/price/max_regular_price</item>
+                                                                <item name="sortOrder" xsi:type="number">6</item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="awAfptcPromoOfferProvider" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/provider</item>
+                                <item name="show_attributes" xsi:type="string">price</item>
+                                <item name="clientConfig" xsi:type="array">
+                                    <item name="urls" xsi:type="array">
+                                        <item name="save" xsi:type="url" path="aw_afptc/product/addToCart"/>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

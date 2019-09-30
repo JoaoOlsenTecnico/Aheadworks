@@ -1,0 +1,12 @@
+<div class="control-table-text">
+    <span attr="'data-index': index" data-bind="
+        text: value,
+        css: {_disabled: disabled}
+    ">
+    </span>
+
+    <dl class="item-options" repeat="foreach: options, item: '$option'">
+        <dt text="$option().option_id_label" />
+        <dd text="$option().option_value_label" />
+    </dl>
+</div>

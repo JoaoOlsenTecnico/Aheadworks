@@ -1,0 +1,118 @@
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .aw-afptc {
+    &__promo-offer-link {
+
+      .action {
+        outline: none;
+        border: none;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        font-weight: normal;
+
+        &:active {
+          outline: none;
+          border: none;
+          box-shadow: none;
+        }
+
+        &:focus {
+          outline: none;
+          border: none;
+        }
+
+        &::before {
+          content: '';
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 66" height="22.994" width="22.994"><path fill="@{aw-afptc-svg__color}" d="M33 15.263l5.5-7A8.748 8.748 0 0 1 45.716 5a9.34 9.34 0 0 1 6.81 2.778A9.1 9.1 0 0 1 55.34 14.5a9.1 9.1 0 0 1-2.814 6.722A9.338 9.338 0 0 1 45.716 24H20.28a9.336 9.336 0 0 1-6.81-2.778 9.1 9.1 0 0 1-2.814-6.722 9.1 9.1 0 0 1 2.814-6.722A9.339 9.339 0 0 1 20.28 5a8.75 8.75 0 0 1 7.22 3.266m1.16 10.306h-8.38a4 4 0 0 1-2.922-1.187 4.058 4.058 0 0 1 0-5.768 4 4 0 0 1 2.922-1.187 3.7 3.7 0 0 1 2.965 1.315zm17.057 0h-8.336l5.371-6.828a3.7 3.7 0 0 1 2.965-1.315 4.007 4.007 0 0 1 2.922 1.188 4.058 4.058 0 0 1 0 5.768 4 4 0 0 1-2.923 1.186zM64 39.344h-4.719v20.219a2 2 0 0 1-2 2H8.719a2 2 0 0 1-2-2V39.344H2a2 2 0 0 1-2-2V24h66v13.344a2 2 0 0 1-2 2zm-38.219-3h14.313V50.5a2.5 2.5 0 0 1-2.5 2.5h-9.313a2.5 2.5 0 0 1-2.5-2.5V36.344zm0-11h14.313V31H25.781v-5.656z" fill-rule="evenodd"/></svg>');
+          display: inline-block;
+          width: 23px;
+          height: 23px;
+          vertical-align: middle;
+        }
+
+        &:hover {
+          &::before {
+            content: '';
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 66 66" height="22.994" width="22.994"><path fill="@{aw-afptc-svg__color-hover}" d="M33 15.263l5.5-7A8.748 8.748 0 0 1 45.716 5a9.34 9.34 0 0 1 6.81 2.778A9.1 9.1 0 0 1 55.34 14.5a9.1 9.1 0 0 1-2.814 6.722A9.338 9.338 0 0 1 45.716 24H20.28a9.336 9.336 0 0 1-6.81-2.778 9.1 9.1 0 0 1-2.814-6.722 9.1 9.1 0 0 1 2.814-6.722A9.339 9.339 0 0 1 20.28 5a8.75 8.75 0 0 1 7.22 3.266m1.16 10.306h-8.38a4 4 0 0 1-2.922-1.187 4.058 4.058 0 0 1 0-5.768 4 4 0 0 1 2.922-1.187 3.7 3.7 0 0 1 2.965 1.315zm17.057 0h-8.336l5.371-6.828a3.7 3.7 0 0 1 2.965-1.315 4.007 4.007 0 0 1 2.922 1.188 4.058 4.058 0 0 1 0 5.768 4 4 0 0 1-2.923 1.186zM64 39.344h-4.719v20.219a2 2 0 0 1-2 2H8.719a2 2 0 0 1-2-2V39.344H2a2 2 0 0 1-2-2V24h66v13.344a2 2 0 0 1-2 2zm-38.219-3h14.313V50.5a2.5 2.5 0 0 1-2.5 2.5h-9.313a2.5 2.5 0 0 1-2.5-2.5V36.344zm0-11h14.313V31H25.781v-5.656z" fill-rule="evenodd"/></svg>');
+          }
+        }
+      }
+    }
+
+    &__counter {
+      .lib-css(background, @aw-afptc-counter__background-color);
+      .lib-css(color, @aw-afptc-counter__color);
+      height: 24px;
+      line-height: 24px;
+      border-radius: 2px;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 3px 0 0 3px;
+      min-width: 18px;
+      overflow: hidden;
+      padding: 0 3px;
+      text-align: center;
+      white-space: normal;
+      text-shadow: 0 0 7px @aw-afptc-promo-offer-link-text__color;
+    }
+  }
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+  .aw-afptc {
+    &__promo-offer-link {
+      .lib-css(background-color, @aw-afptc-counter__color);
+      border-bottom: 1px solid @aw-afptc-container__border-color;
+      position: absolute;
+      bottom: -52px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+      padding: @aw-afptc-promo-offer-link__indent-s @aw-afptc-promo-offer-link__indent-base - 5;
+      text-align: right;
+      box-sizing: border-box;
+
+      .action {
+        margin: 0 0 0 @indent__s;
+      }
+    }
+
+    &__desc-text {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &-open {
+      &.page-header {
+        margin-bottom: @aw-afptc-promo-offer-link__indent-base * 3;
+      }
+    }
+  }
+}
+
+//
+//  Desktop large
+//  _____________________________________________
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+  .aw-afptc {
+    &__promo-offer-link {
+      float: right;
+      margin-left: @indent__s;
+    }
+
+    &__desc-text {
+      display: none;
+    }
+  }
+}

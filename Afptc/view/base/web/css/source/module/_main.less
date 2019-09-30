@@ -1,0 +1,100 @@
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .aw-afptc {
+    &__main-popup {
+      .modal-header {
+        padding: 0;
+
+        .action-close {
+          padding: 0;
+          right: @aw-afptc-promo-products-main-modal__indet/2;
+          top: @aw-afptc-promo-products-main-modal__indet/2;
+        }
+      }
+      .modal-content {
+        padding:@aw-afptc-promo-products-main-modal__indet @aw-afptc-promo-products-main-modal__indet * 2;
+      }
+      .modal-inner-wrap {
+        max-width: 580px;
+        width: 90%;
+
+        &.aw-afptc-col-1 {
+          max-width: 335px;
+        }
+
+        &.aw-afptc-col-2 {
+          max-width: 580px;
+        }
+      }
+    }
+  }
+
+  ._keyfocus *:focus,
+  input:not([disabled]):focus,
+  textarea:not([disabled]):focus,
+  select:not([disabled]):focus {
+    box-shadow: @aw-afptc-element-click__focus-shadow;
+  }
+
+}
+
+
+//
+//  Mobile
+//  _____________________________________________
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__s) {
+  .aw-afptc {
+    &__main-popup {
+      .modal-header {
+        .action-close {
+          right: @aw-afptc-promo-products-main-modal__indet-xs;
+          top: @aw-afptc-promo-products-main-modal__indet-xs;
+        }
+      }
+      .modal-inner-wrap {
+        max-width: 335px !important;
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
+}
+
+& when (@media-target = 'mobile'), (@media-target = 'all') {
+  @media only screen and (max-width: (@aw-afptc-screen__xs)) {
+    .aw-afptc {
+      &__main-popup {
+        .modal-inner-wrap {
+          max-width: 295px !important;
+        }
+
+        .modal-content {
+          padding: @aw-afptc-promo-products-main-modal__indet !important;
+        }
+      }
+    }
+  }
+}
+
+//
+//  Desktop large
+//  _____________________________________________
+
+& when (@media-target = 'desktop'), (@media-target = 'all') {
+  @media only screen and (min-width: (@aw-afptc-screen__m)) {
+    .aw-afptc {
+      &__main-popup {
+        .modal-inner-wrap {
+          max-width: 825px;
+        }
+      }
+    }
+  }
+}
+
+.media-width(@extremum, @break) when (@extremum = 'min') and (@break = @screen__m) {
+}

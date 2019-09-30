@@ -1,0 +1,75 @@
+//
+//  Sentence container
+//  _____________________________________________
+
+.aw-afptc__sentence-container {
+    margin-left: ~'calc( (100%) * 0.25 + 8px )';
+    min-width: 650px;
+
+    .aw-afptc__sentence {
+        margin-bottom: 17px;
+
+        .admin__field {
+            display: inline-block;
+
+            & + .admin__field {
+                margin-top: 0;
+            }
+
+            .preview-label {
+                font-size: 14px;
+                font-weight: 600;
+                color: #000;
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            .admin__field-error {
+                position: absolute;
+                padding: .1rem 1rem;
+            }
+        }
+
+        .admin__field-tooltip {
+            margin-top: 0;
+
+            .admin__field-tooltip-action {
+                margin-left: 0.5rem;
+            }
+            .admin__field-tooltip-content {
+                right: -5.5rem;
+            }
+        }
+
+        .admin__field-button {
+            margin-left: 1rem;
+        }
+
+        .aw_afptc__long-field {
+            input {
+                width: 25rem;
+            }
+        }
+
+        .aw_afptc__short-field {
+            input {
+                width: 5rem;
+            }
+        }
+    }
+
+    .aw_afptc__container-conditions {
+        .rule-tree {
+            .legend {
+                display: none;
+            }
+        }
+    }
+
+    .aw_afptc__zero-margin-sentence {
+        margin-bottom: 0;
+    }
+}

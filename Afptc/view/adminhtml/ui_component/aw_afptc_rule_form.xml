@@ -1,0 +1,1147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">aw_afptc_rule_form.aw_afptc_rule_form_data_source</item>
+            <item name="deps" xsi:type="string">aw_afptc_rule_form.aw_afptc_rule_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Rule</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">aw_afptc_rule_form</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Button\Back</item>
+            <item name="delete" xsi:type="string">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Button\Delete</item>
+            <item name="reset" xsi:type="string">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Button\Reset</item>
+            <item name="save_and_continue" xsi:type="string">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Button\SaveAndContinue</item>
+            <item name="save" xsi:type="string">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Button\Save</item>
+        </item>
+    </argument>
+    <dataSource name="aw_afptc_rule_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProvider</argument>
+            <argument name="name" xsi:type="string">aw_afptc_rule_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">rule_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="aw_afptc/rule/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <modal name="aw_afptc_rule_product_listing_modal">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataScope" xsi:type="string"/>
+                <item name="options" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Select Products</item>
+                    <item name="buttons" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="text" xsi:type="string" translate="true">Cancel</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">closeModal</item>
+                            </item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="text" xsi:type="string" translate="true">Add Selected Products</item>
+                            <item name="class" xsi:type="string">action-primary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="array">
+                                    <item name="targetName" xsi:type="string">index = aw_afptc_rule_product_listing</item>
+                                    <item name="actionName" xsi:type="string">save</item>
+                                </item>
+                                <item name="1" xsi:type="string">closeModal</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <insertListing name="aw_afptc_rule_product_listing">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="cssclass" xsi:type="string">aw_afptc_rule_product_listing</item>
+                    <item name="autoRender" xsi:type="boolean">false</item>
+                    <item name="componentType" xsi:type="string">insertListing</item>
+                    <item name="dataScope" xsi:type="string">aw_afptc_rule_product_listing</item>
+                    <item name="externalProvider" xsi:type="string">${ $.ns }.aw_afptc_rule_product_listing_data_source</item>
+                    <item name="selectionsProvider" xsi:type="string">${ $.ns }.aw_afptc_rule_product_listing.product_columns.ids</item>
+                    <item name="ns" xsi:type="string">aw_afptc_rule_product_listing</item>
+                    <item name="provider" xsi:type="string">aw_afptc_rule_form.aw_afptc_rule_form_data_source</item>
+                    <item name="render_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="realTimeLink" xsi:type="boolean">true</item>
+                    <item name="dataLinks" xsi:type="array">
+                        <item name="imports" xsi:type="boolean">false</item>
+                        <item name="exports" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="behaviourType" xsi:type="string">simple</item>
+                    <item name="externalFilterMode" xsi:type="boolean">true</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="productId" xsi:type="string">${ $.provider }:data.product.current_product_id</item>
+                        <item name="storeId" xsi:type="string">${ $.provider }:data.product.current_store_id</item>
+                    </item>
+                    <item name="exports" xsi:type="array">
+                        <item name="productId" xsi:type="string">${ $.externalProvider }:params.current_product_id</item>
+                        <item name="storeId" xsi:type="string">${ $.externalProvider }:params.current_store_id</item>
+                    </item>
+                </item>
+            </argument>
+        </insertListing>
+    </modal>
+    <modal name="product_configuration_modal">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataScope" xsi:type="string"/>
+                <item name="options" xsi:type="array">
+                    <item name="title" xsi:type="string" translate="true">Configure Product</item>
+                    <item name="buttons" xsi:type="array">
+                        <item name="0" xsi:type="array">
+                            <item name="text" xsi:type="string" translate="true">Cancel</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="string">closeModal</item>
+                            </item>
+                        </item>
+                        <item name="1" xsi:type="array">
+                            <item name="text" xsi:type="string" translate="true">OK</item>
+                            <item name="class" xsi:type="string">action-primary</item>
+                            <item name="actions" xsi:type="array">
+                                <item name="0" xsi:type="array">
+                                    <item name="targetName" xsi:type="string">index = product-configuration</item>
+                                    <item name="actionName" xsi:type="string">updateExternalSource</item>
+                                </item>
+                                <item name="1" xsi:type="string">closeModal</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </argument>
+        <container name="product-configuration">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/component/configuration</item>
+                    <item name="externalSource" xsi:type="string">${ $.ns }.aw_afptc_rule_form_data_source</item>
+                    <item name="externalDataScope" xsi:type="string">data.promo_products</item>
+                    <item name="deps" xsi:type="array">
+                        <item name="0" xsi:type="string">aw_afptc_rule_form.aw_afptc_rule_form.product_configuration_modal.product-configuration-provider</item>
+                    </item>
+                    <item name="productConfig" xsi:type="array">
+                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/component/product</item>
+                        <item name="parent" xsi:type="string">${ $.name }</item>
+                        <item name="provider" xsi:type="string">${ $.provider }</item>
+                        <item name="optionsConfig" xsi:type="array">
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/components/promo-products/product/options-renderer/default</item>
+                            <item name="provider" xsi:type="string">${ $.provider }</item>
+                        </item>
+                        <item name="rendererList" xsi:type="array">
+                            <item name="configurable" xsi:type="array">
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/component/product/option-renderer/configurable</item>
+                                <item name="provider" xsi:type="string">${ $.provider }</item>
+                                <item name="attributeFieldConfig" xsi:type="array">
+                                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/component/product/option-renderer/configurable/field/select</item>
+                                    <item name="provider" xsi:type="string">${ $.provider }</item>
+                                    <item name="template" xsi:type="string">ui/form/field</item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </container>
+        <container name="product-configuration-provider">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/component/provider</item>
+                    <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/components/provider/empty</item>
+                    <item name="providerConfig" xsi:type="array">
+                        <item name="urls" xsi:type="array">
+                            <item name="configure" xsi:type="url" path="aw_afptc/rule/configureProduct"/>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </container>
+    </modal>
+    <fieldset name="general_settings">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">General Settings</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+        <field name="rule_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="dataScope" xsi:type="string">rule_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">description</item>
+                    <item name="notice" xsi:type="string" translate="true">Visible for admin only. For frontend description see the options in "Promo" section</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="active">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Enable</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">active</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="from_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Active From</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">from_date</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-date" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="to_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Active To</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">to_date</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="validate-date" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="website_ids" class="Aheadworks\Afptc\Ui\Component\Form\Rule\Element\Website">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Afptc\Model\Source\System\Website</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Website</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="dataScope" xsi:type="string">website_ids</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="customer_group_ids">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Afptc\Model\Source\Customer\Group</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">number</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Groups</item>
+                    <item name="formElement" xsi:type="string">multiselect</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataScope" xsi:type="string">customer_group_ids</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="priority">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Rule Priority</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                    <item name="dataScope" xsi:type="string">priority</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                        <item name="validate-number" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="notice" xsi:type="string" translate="true">Zero is a top priority</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="stop_rules_processing">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Discard Subsequent Rules</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">90</item>
+                    <item name="dataScope" xsi:type="string">stop_rules_processing</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="in_stock_offer_only">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">checkbox</item>
+                    <item name="label" xsi:type="string" translate="true">Offer Only Those Products Which Are In Stock</item>
+                    <item name="prefer" xsi:type="string">toggle</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">100</item>
+                    <item name="dataScope" xsi:type="string">in_stock_offer_only</item>
+                    <item name="valueMap" xsi:type="array">
+                        <item name="true" xsi:type="string">1</item>
+                        <item name="false" xsi:type="string">0</item>
+                    </item>
+                    <item name="default" xsi:type="string">1</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="rule_settings">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Rule Settings</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+                <item name="template" xsi:type="string">ui/form/fieldset</item>
+            </item>
+        </argument>
+        <field name="scenario">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Afptc\Model\Source\Rule\Scenario</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Scenario</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="dataScope" xsi:type="string">scenario</item>
+                    <item name="default" xsi:type="string">buy_x_get_y</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                    <item name="switcherConfig" xsi:type="array">
+                        <item name="enabled" xsi:type="boolean">true</item>
+                        <item name="rules" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="value" xsi:type="string">buy_x_get_y</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.advanced_conditions_container.advanced_conditions_buy_x_get_y</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.promo_settings</item>
+                                        <item name="callback" xsi:type="string">visible</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="boolean">true</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">spend_x_get_y</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container.coupon_sentence</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container.criteria_sentence</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="4" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.advanced_conditions_container.advanced_conditions_buy_x_get_y</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="5" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.promo_settings</item>
+                                        <item name="callback" xsi:type="string">visible</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="boolean">false</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                            <item name="2" xsi:type="array">
+                                <item name="value" xsi:type="string">coupon</item>
+                                <item name="actions" xsi:type="array">
+                                    <item name="0" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="1" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="2" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container.coupon_sentence</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="3" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.coupon_container.criteria_sentence</item>
+                                        <item name="callback" xsi:type="string">show</item>
+                                    </item>
+                                    <item name="4" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.advanced_conditions_container.advanced_conditions_buy_x_get_y</item>
+                                        <item name="callback" xsi:type="string">hide</item>
+                                    </item>
+                                    <item name="5" xsi:type="array">
+                                        <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.promo_settings</item>
+                                        <item name="callback" xsi:type="string">visible</item>
+                                        <item name="params" xsi:type="array">
+                                            <item name="0" xsi:type="boolean">false</item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <container name="sentence_container">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/components/sentence-container</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+            <container name="buy_x_get_y_container">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                    </item>
+                </argument>
+                <container name="condition_sentence">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence</item>
+                        </item>
+                    </argument>
+                    <field name="simple_action">
+                        <argument name="data" xsi:type="array">
+                            <item name="options" xsi:type="object">Aheadworks\Afptc\Model\Source\Rule\SimpleAction</item>
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">number</item>
+                                <item name="formElement" xsi:type="string">select</item>
+                                <item name="source" xsi:type="string">rule</item>
+                                <item name="textAfter" xsi:type="string" translate="true">when criteria below are met</item>
+                                <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/select</item>
+                                <item name="switcherConfig" xsi:type="array">
+                                    <item name="enabled" xsi:type="boolean">true</item>
+                                    <item name="rules" xsi:type="array">
+                                        <item name="0" xsi:type="array">
+                                            <item name="value" xsi:type="string">for_each_n</item>
+                                            <item name="actions" xsi:type="array">
+                                                <item name="0" xsi:type="array">
+                                                    <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container.simple_action_n_sentence</item>
+                                                    <item name="callback" xsi:type="string">show</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="1" xsi:type="array">
+                                            <item name="value" xsi:type="string">every</item>
+                                            <item name="actions" xsi:type="array">
+                                                <item name="0" xsi:type="array">
+                                                    <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container.simple_action_n_sentence</item>
+                                                    <item name="callback" xsi:type="string">hide</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                        <item name="2" xsi:type="array">
+                                            <item name="value" xsi:type="string">only_one_of</item>
+                                            <item name="actions" xsi:type="array">
+                                                <item name="0" xsi:type="array">
+                                                    <item name="target" xsi:type="string">${ $.ns }.${ $.ns }.rule_settings.sentence_container.buy_x_get_y_container.simple_action_n_sentence</item>
+                                                    <item name="callback" xsi:type="string">hide</item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                </container>
+                <container name="simple_action_n_sentence">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence aw_afptc__zero-margin-sentence</item>
+                        </item>
+                    </argument>
+                    <field name="simple_action_n">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="source" xsi:type="string">rule</item>
+                                <item name="dataScope" xsi:type="string">simple_action_n</item>
+                                <item name="additionalClasses" xsi:type="string">aw_afptc__short-field</item>
+                                <item name="textBefore" xsi:type="string" translate="true">Where N equals</item>
+                                <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/input</item>
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/field-with-preview</item>
+                                <item name="validation" xsi:type="array">
+                                    <item name="validate-number" xsi:type="boolean">true</item>
+                                </item>
+                            </item>
+                        </argument>
+                    </field>
+                </container>
+                <container name="advanced_conditions_container">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence aw_afptc__container-conditions</item>
+                        </item>
+                    </argument>
+                    <htmlContent name="html_content">
+                        <argument name="block" xsi:type="object">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Tab\Conditions\BuyXGetY\Conditions</argument>
+                    </htmlContent>
+                </container>
+            </container>
+            <container name="coupon_container">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                    </item>
+                </argument>
+                <container name="coupon_sentence">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence</item>
+                        </item>
+                    </argument>
+                    <field name="coupon_code">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="source" xsi:type="string">rule</item>
+                                <item name="dataScope" xsi:type="string">coupon_code</item>
+                                <item name="textBefore" xsi:type="string" translate="true">When a user entered this coupon code:</item>
+                                <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/input</item>
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/field-with-preview</item>
+                            </item>
+                        </argument>
+                    </field>
+                </container>
+                <container name="criteria_sentence">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/text-sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence aw_afptc__zero-margin-sentence</item>
+                            <item name="text" xsi:type="string" translate="true">And criteria below are met:</item>
+                        </item>
+                    </argument>
+                </container>
+                <container name="advanced_conditions_container">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                            <item name="additionalClasses" xsi:type="string">aw-afptc__sentence aw_afptc__container-conditions</item>
+                        </item>
+                    </argument>
+                    <htmlContent name="html_content">
+                        <argument name="block" xsi:type="object">Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Tab\Conditions\Complete\Conditions</argument>
+                    </htmlContent>
+                </container>
+            </container>
+            <!--<container name="base_conditions_container">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                        <item name="additionalClasses" xsi:type="string">aw-afptc__sentence</item>
+                    </item>
+                </argument>
+            </container>-->
+            <container name="offer_sentence">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/sentence</item>
+                        <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/preview-action</item>
+                        <item name="additionalClasses" xsi:type="string">aw-afptc__sentence</item>
+                    </item>
+                </argument>
+                <field name="qty_to_give">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">rule</item>
+                            <item name="dataScope" xsi:type="string">qty_to_give</item>
+                            <item name="additionalClasses" xsi:type="string">aw_afptc__short-field</item>
+                            <item name="textBefore" xsi:type="string" translate="true">Offer</item>
+                            <item name="textAfter" xsi:type="string" translate="true">of the products below</item>
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                            <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/input</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/field-with-preview</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                                <item name="validate-number" xsi:type="boolean">true</item>
+                                <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="discount_type">
+                    <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">Aheadworks\Afptc\Ui\Component\Form\Rule\Element\DiscountType\Options</item>
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">select</item>
+                            <item name="source" xsi:type="string">rule</item>
+                            <item name="additionalClasses" xsi:type="string">aw_afptc__short-field</item>
+                            <item name="dataScope" xsi:type="string">discount_type</item>
+                            <item name="textAfter" xsi:type="string" translate="true">of</item>
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                            <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/select</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+                <field name="discount_amount">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="formElement" xsi:type="string">input</item>
+                            <item name="source" xsi:type="string">rule</item>
+                            <item name="additionalClasses" xsi:type="string">aw_afptc__short-field</item>
+                            <item name="dataScope" xsi:type="string">discount_amount</item>
+                            <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview-field</item>
+                            <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/preview/input</item>
+                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/field-with-preview</item>
+                            <item name="validation" xsi:type="array">
+                                <item name="required-entry" xsi:type="boolean">true</item>
+                                <item name="validate-number" xsi:type="boolean">true</item>
+                            </item>
+                        </item>
+                    </argument>
+                </field>
+            </container>
+        </container>
+        <container name="product_selection_container">
+            <field name="select_products_button">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="formElement" xsi:type="string">input</item>
+                        <item name="title" xsi:type="string" translate="true">Add Products</item>
+                        <item name="additionalClasses" xsi:type="string">admin__field-small</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/components/button</item>
+                        <item name="template" xsi:type="string">ui/form/components/button/simple</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.ns }.${ $.ns }.aw_afptc_rule_product_listing_modal</item>
+                                <item name="actionName" xsi:type="string">toggleModal</item>
+                            </item>
+                            <item name="1" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.ns }.${ $.ns }.aw_afptc_rule_product_listing_modal.aw_afptc_rule_product_listing</item>
+                                <item name="actionName" xsi:type="string">render</item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+            <dynamicRows name="promo_products">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="additionalClasses" xsi:type="string">admin__field-wide</item>
+                        <item name="source" xsi:type="string">rule</item>
+                        <item name="componentType" xsi:type="string">dynamicRows</item>
+                        <item name="columnsHeader" xsi:type="boolean">false</item>
+                        <item name="columnsHeaderAfterRender" xsi:type="boolean">true</item>
+                        <item name="renderDefaultRecord" xsi:type="boolean">false</item>
+                        <item name="template" xsi:type="string">ui/dynamic-rows/templates/grid</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/dynamic-rows-grid</item>
+                        <item name="addButton" xsi:type="boolean">false</item>
+                        <item name="recordTemplate" xsi:type="string">record</item>
+                        <item name="deleteButtonLabel" xsi:type="string" translate="true">Remove</item>
+                        <item name="configureButtonLabel" xsi:type="string" translate="true">Configure</item>
+                        <item name="dataProvider" xsi:type="string">${ $.dataScope }.aw_afptc_rule_product_listing</item>
+                        <item name="map" xsi:type="array">
+                            <item name="id" xsi:type="string">entity_id</item>
+                            <item name="name" xsi:type="string">name</item>
+                            <item name="status" xsi:type="string">status_text</item>
+                            <item name="attribute_set" xsi:type="string">attribute_set_text</item>
+                            <item name="type" xsi:type="string">type_id</item>
+                            <item name="product_sku" xsi:type="string">sku</item>
+                            <item name="price" xsi:type="string">price</item>
+                            <item name="thumbnail" xsi:type="string">thumbnail_src</item>
+                        </item>
+                        <item name="links" xsi:type="array">
+                            <item name="insertData" xsi:type="string">${ $.provider }:${ $.dataProvider }</item>
+                        </item>
+                    </item>
+                </argument>
+                <container name="record">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="isTemplate" xsi:type="boolean">true</item>
+                            <item name="is_collection" xsi:type="boolean">true</item>
+                            <item name="component" xsi:type="string">Magento_Ui/js/dynamic-rows/record</item>
+                            <item name="componentType" xsi:type="string">container</item>
+                        </item>
+                    </argument>
+                    <field name="id">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="dataScope" xsi:type="string">id</item>
+                                <item name="fit" xsi:type="boolean">false</item>
+                                <item name="label" xsi:type="string" translate="true">ID</item>
+                                <item name="sortOrder" xsi:type="number">10</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="name">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="additionalClasses" xsi:type="string">data-grid-cell-with-options</item>
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/dynamic-rows/text-with-options</item>
+                                <item name="elementTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/dynamic-rows/cells/text-with-options</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="dataScope" xsi:type="string"></item>
+                                <item name="optionLabelsDataScope" xsi:type="string">configurable_item_options</item>
+                                <item name="fit" xsi:type="boolean">false</item>
+                                <item name="label" xsi:type="string" translate="true">Name</item>
+                                <item name="sortOrder" xsi:type="number">20</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="thumbnail">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/thumbnail</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="dataScope" xsi:type="string">thumbnail</item>
+                                <item name="fit" xsi:type="boolean">true</item>
+                                <item name="label" xsi:type="string" translate="true">Thumbnail</item>
+                                <item name="sortOrder" xsi:type="number">30</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="type">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="dataScope" xsi:type="string">type</item>
+                                <item name="fit" xsi:type="boolean">false</item>
+                                <item name="label" xsi:type="string" translate="true">Type</item>
+                                <item name="sortOrder" xsi:type="number">40</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <field name="product_sku">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="elementTmpl" xsi:type="string">ui/dynamic-rows/cells/text</item>
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="dataScope" xsi:type="string">product_sku</item>
+                                <item name="fit" xsi:type="boolean">false</item>
+                                <item name="label" xsi:type="string" translate="true">SKU</item>
+                                <item name="sortOrder" xsi:type="number">50</item>
+                            </item>
+                        </argument>
+                    </field>
+                    <action>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                                <item name="componentType" xsi:type="string">action</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="label" xsi:type="string" translate="true">Configuration</item>
+                                <item name="fit" xsi:type="boolean">true</item>
+                                <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/dynamic-rows/action-configure</item>
+                                <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/dynamic-rows/cells/action-configure</item>
+                                <item name="sortOrder" xsi:type="number">60</item>
+                            </item>
+                        </argument>
+                    </action>
+                    <actionDelete>
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                                <item name="componentType" xsi:type="string">actionDelete</item>
+                                <item name="dataType" xsi:type="string">text</item>
+                                <item name="label" xsi:type="string" translate="true">Actions</item>
+                                <item name="fit" xsi:type="boolean">true</item>
+                                <item name="sortOrder" xsi:type="number">70</item>
+                            </item>
+                        </argument>
+                    </actionDelete>
+                    <field name="position">
+                        <argument name="data" xsi:type="array">
+                            <item name="config" xsi:type="array">
+                                <item name="dataType" xsi:type="string">number</item>
+                                <item name="formElement" xsi:type="string">input</item>
+                                <item name="componentType" xsi:type="string">field</item>
+                                <item name="dataScope" xsi:type="string">position</item>
+                                <item name="sortOrder" xsi:type="number">80</item>
+                                <item name="visible" xsi:type="boolean">false</item>
+                            </item>
+                        </argument>
+                    </field>
+                </container>
+            </dynamicRows>
+        </container>
+    </fieldset>
+    <fieldset name="popup_settings">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Popup Settings</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">30</item>
+            </item>
+        </argument>
+        <field name="how_to_offer">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Afptc\Model\Source\Rule\HowToOfferType</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">How to offer promo products</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">how_to_offer</item>
+                    <item name="notice" xsi:type="string" translate="true">Applies to a single promo product of simple type and without options. For other product types and quantities popup will always be displayed</item>
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+        </field>
+        <field name="popup_header_text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Text in the Popup Header</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="dataScope" xsi:type="string">popup_header_text</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+    <fieldset name="promo_settings">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Promo Settings</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">true</item>
+                <item name="sortOrder" xsi:type="number">40</item>
+            </item>
+        </argument>
+        <field name="promo_offer_info_text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Promo Text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="dataScope" xsi:type="string">promo_offer_info_text</item>
+                    <item name="notice" xsi:type="string" translate="true">The text next to product price</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_on_sale_label_id">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Aheadworks\Afptc\Model\ThirdPartyModule\OnSale\Source\Label\LabelList</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product Label</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/ui-select</item>
+                    <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                    <item name="dataScope" xsi:type="string">promo_on_sale_label_id</item>
+                    <item name="filterOptions" xsi:type="boolean">true</item>
+                    <item name="showCheckbox" xsi:type="boolean">false</item>
+                    <item name="disableLabel" xsi:type="boolean">true</item>
+                    <item name="multiple" xsi:type="boolean">false</item>
+                    <item name="levelsVisibility" xsi:type="number">1</item>
+                    <item name="default" xsi:type="string">do_not_use</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">${ $.provider }:data.onSaleEnabled</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_on_sale_label_large">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Large Text On The Promo Label</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="dataScope" xsi:type="string">promo_on_sale_label_large</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">${ $.provider }:data.onSaleEnabled</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_on_sale_label_medium">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Medium Text On The Promo Label</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                    <item name="dataScope" xsi:type="string">promo_on_sale_label_medium</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">${ $.provider }:data.onSaleEnabled</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_on_sale_label_small">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Small Text On The Promo Label</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                    <item name="dataScope" xsi:type="string">promo_on_sale_label_small</item>
+                    <item name="imports" xsi:type="array">
+                        <item name="visible" xsi:type="string">${ $.provider }:data.onSaleEnabled</item>
+                    </item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_image">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentType" xsi:type="string">fileUploader</item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/image/file-uploader</item>
+                    <item name="template" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/image/file-uploader</item>
+                    <item name="previewTmpl" xsi:type="string">Aheadworks_Afptc/ui/form/element/rule/image/image-preview</item>
+                    <item name="imagePreviewUrl" xsi:type="url" path="*/*/imagePreview"/>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="label" xsi:type="string" translate="true">Image</item>
+                    <item name="imagePlaceholderText" xsi:type="string" translate="true">Browse to find or drag image here</item>
+                    <item name="allowedExtensions" xsi:type="string">jpg jpeg gif png</item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="string">aw_afptc/rule/imageUpload</item>
+                    </item>
+                    <item name="additionalClasses" xsi:type="string">aw-afptc__image-loader</item>
+                    <item name="maxFileSize" xsi:type="number">2097152</item>
+                    <item name="fileInputName" xsi:type="string">image</item>
+                    <item name="dataScope" xsi:type="string">promo_image</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_image_alt_text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Image Alt</item>
+                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/ui/form/element/rule/image/alt-field</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
+                    <item name="dataScope" xsi:type="string">promo_image_alt_text</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_header">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Header</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
+                    <item name="dataScope" xsi:type="string">promo_header</item>
+                    <item name="notice" xsi:type="string" translate="true">Header of promotional popup</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_description">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Description</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">90</item>
+                    <item name="dataScope" xsi:type="string">promo_description</item>
+                    <item name="notice" xsi:type="string" translate="true">Description should optimally be between 100-120 characters</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">URL</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">100</item>
+                    <item name="dataScope" xsi:type="string">promo_url</item>
+                    <item name="notice" xsi:type="string" translate="true">Absolute or relative paths are allowed</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+        <field name="promo_url_text">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">URL Text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">rule</item>
+                    <item name="sortOrder" xsi:type="number">110</item>
+                    <item name="dataScope" xsi:type="string">promo_url_text</item>
+                    <item name="notice" xsi:type="string" translate="true">"Find out more" text</item>
+                    <item name="scopeLabel" xsi:type="string">[STORE VIEW]</item>
+                    <item name="globalScope" xsi:type="boolean">false</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

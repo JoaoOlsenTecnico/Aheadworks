@@ -1,0 +1,10 @@
+<div if="atLeastOneColumnIsVisible()" class="aw-afptc__top-totals-list-wrap">
+    <div class="summary-title" if="title"><span text="title"/></div>
+    <ul class="total-list" repeat="foreach: totals, item: '$row'">
+        <li class="total-item" outerfasteach="data: elems(), as: '$col'">
+            <div class="title" text="$col.label" />
+            <div class="total" text="$col.getValue($row())" />
+            <div if="isEnabledCompare()" class="compare" text="$col.getCompareValue($row())" />
+        </li>
+    </ul>
+</div>

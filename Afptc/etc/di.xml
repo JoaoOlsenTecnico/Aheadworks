@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Aheadworks\Afptc\Api\Data\RuleInterface" type="Aheadworks\Afptc\Model\Rule" />
+    <preference for="Aheadworks\Afptc\Api\Data\RulePromoProductInterface" type="Aheadworks\Afptc\Model\Rule\PromoProduct" />
+    <preference for="Aheadworks\Afptc\Api\Data\RuleSearchResultsInterface" type="Magento\Framework\Api\SearchResults" />
+    <preference for="Aheadworks\Afptc\Api\Data\ConditionInterface" type="Aheadworks\Afptc\Model\Rule\Condition" />
+    <preference for="Aheadworks\Afptc\Api\RuleRepositoryInterface" type="Aheadworks\Afptc\Model\RuleRepository" />
+    <preference for="Aheadworks\Afptc\Api\CartManagementInterface" type="Aheadworks\Afptc\Model\Service\CartService" />
+    <preference for="Aheadworks\Afptc\Api\GuestCartManagementInterface" type="Aheadworks\Afptc\Model\Service\GuestCartService" />
+    <preference for="Aheadworks\Afptc\Api\RuleManagementInterface" type="Aheadworks\Afptc\Model\Service\RuleService" />
+    <preference for="Aheadworks\Afptc\Api\GuestRuleManagementInterface" type="Aheadworks\Afptc\Model\Service\GuestRuleService" />
+    <preference for="Aheadworks\Afptc\Api\Data\RuleMetadataInterface" type="Aheadworks\Afptc\Model\Metadata\Rule" />
+    <preference for="Aheadworks\Afptc\Api\Data\RuleMetadataPromoProductInterface" type="Aheadworks\Afptc\Model\Metadata\Rule\PromoProduct" />
+    <preference for="Aheadworks\Afptc\Api\IndexManagementInterface" type="Aheadworks\Afptc\Model\Service\IndexService" />
+    <preference for="Aheadworks\Afptc\Api\Data\CartItemRuleInterface" type="Aheadworks\Afptc\Model\Cart\ItemRule" />
+    <preference for="Aheadworks\Afptc\Api\PromoOfferRenderListInterface" type="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoOfferRenderInterface" type="Aheadworks\Afptc\Model\PromoOffer\Render" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoOfferRender\RuleConfigInterface" type="Aheadworks\Afptc\Model\PromoOffer\Render\RuleConfig" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoOfferRender\ProductRenderInterface" type="Aheadworks\Afptc\Model\PromoOffer\Render\Product" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoOfferRender\ProductRender\ImageInterface" type="Aheadworks\Afptc\Model\PromoOffer\Render\Product\Image" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoInfoBlockInterface" type="Aheadworks\Afptc\Model\Rule\Promo\InfoBlock" />
+    <preference for="Aheadworks\Afptc\Api\Data\PromoInterface" type="Aheadworks\Afptc\Model\Rule\Promo" />
+    <preference for="Aheadworks\Afptc\Api\PromoInfoBlockRepositoryInterface" type="Aheadworks\Afptc\Model\Rule\Promo\InfoBlockRepository" />
+    <preference for="Aheadworks\Afptc\Api\Data\CheckoutSummaryProductImageInterface" type="Aheadworks\Afptc\Model\Checkout\Summary\Item\ImageData" />
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Aheadworks\Afptc\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">aw_afptc_rule_entity</item>
+                    <item name="eavEntityType" xsi:type="string">aw_afptc_rule</item>
+                    <item name="identifierField" xsi:type="string">rule_id</item>
+                    <item name="entityContext" xsi:type="array">
+                        <item name="store" xsi:type="string">Magento\Store\Model\StoreScopeProvider</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Aheadworks\Afptc\Api\Data\RuleInterface" xsi:type="array">
+                    <item name="create" xsi:type="array">
+                        <item name="websiteCreator" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\Website\SaveHandler</item>
+                        <item name="customerGroupCreator" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\CustomerGroup\SaveHandler</item>
+                        <item name="promoProductCreator" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\PromoProduct\SaveHandler</item>
+                        <item name="productAttributeCreator" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\ProductAttribute\SaveHandler</item>
+                    </item>
+                    <item name="read" xsi:type="array">
+                        <item name="websiteReader" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\Website\ReadHandler</item>
+                        <item name="customerGroupReader" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\CustomerGroup\ReadHandler</item>
+                        <item name="promoProductReader" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\PromoProduct\ReadHandler</item>
+                    </item>
+                    <item name="update" xsi:type="array">
+                        <item name="websiteUpdater" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\Website\SaveHandler</item>
+                        <item name="customerGroupUpdater" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\CustomerGroup\SaveHandler</item>
+                        <item name="promoProductUpdater" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\PromoProduct\SaveHandler</item>
+                        <item name="productAttributeUpdater" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Relation\ProductAttribute\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="aw_afptc_rule_listing_data_source" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule\Grid\Collection</item>
+                <item name="aw_afptc_rule_product_listing_data_source" xsi:type="string">Magento\Catalog\Ui\DataProvider\Product\Related\RelatedDataProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\ResourceModel\Rule\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">aw_afptc_rule</argument>
+            <argument name="eventPrefix" xsi:type="string">aw_afptc_rule_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">rule_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Aheadworks\Afptc\Model\ResourceModel\Rule</argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Afptc\Model\Api\SearchCriteria\CollectionProcessor\RuleFilterProcessor" type="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+        <arguments>
+            <argument name="customFilters" xsi:type="array">
+                <item name="website_ids" xsi:type="object">Aheadworks\Afptc\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Rule\WebsiteFilter</item>
+                <item name="customer_group_ids" xsi:type="object">Aheadworks\Afptc\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Rule\CustomerGroupFilter</item>
+                <item name="date" xsi:type="object">Aheadworks\Afptc\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\Rule\DateFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Aheadworks\Afptc\Model\Api\SearchCriteria\RuleCollectionProcessor" type="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="filters" xsi:type="object">Aheadworks\Afptc\Model\Api\SearchCriteria\CollectionProcessor\RuleFilterProcessor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Afptc\Model\RuleRepository">
+        <arguments>
+            <argument name="collectionProcessor" xsi:type="object">Aheadworks\Afptc\Model\Api\SearchCriteria\RuleCollectionProcessor</argument>
+        </arguments>
+    </type>
+    <virtualType name="AwAfptcRuleGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="AwAfptcRuleGridDataProvider" type="Aheadworks\Afptc\Ui\DataProvider\Rule\ListingDataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Aheadworks\Afptc\Model\ResourceModel\Rule\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">AwAfptcRuleGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Aheadworks\Afptc\Block\Promo\Renderer\Popup">
+        <arguments>
+            <argument name="layoutProcessors" xsi:type="array">
+                <item name="common" xsi:type="object">Aheadworks\Afptc\Model\Rule\Promo\Block\Layout\Processor\Common</item>
+                <item name="image" xsi:type="object">Aheadworks\Afptc\Model\Rule\Promo\Block\Layout\Processor\Image</item>
+                <item name="url" xsi:type="object">Aheadworks\Afptc\Model\Rule\Promo\Block\Layout\Processor\Url</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Validator">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="common" xsi:type="object">Aheadworks\Afptc\Model\Rule\Validator\Common</item>
+                <item name="date" xsi:type="object">Aheadworks\Afptc\Model\Rule\Validator\Date</item>
+                <item name="promoProduct" xsi:type="object">Aheadworks\Afptc\Model\Rule\Validator\PromoProduct</item>
+                <item name="coupon" xsi:type="object">Aheadworks\Afptc\Model\Rule\Validator\Coupon</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Processor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="productCondition" xsi:type="object">Aheadworks\Afptc\Model\Rule\Processor\ProductCondition</item>
+                <item name="promoProductOption" xsi:type="object">Aheadworks\Afptc\Model\Rule\Processor\PromoProduct\Option</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Discount\Calculator\Pool">
+        <arguments>
+            <argument name="calculators" xsi:type="array">
+                <item name="percent" xsi:type="object">Aheadworks\Afptc\Model\Rule\Discount\Calculator\ByPercent</item>
+                <item name="fixed_price" xsi:type="object">Aheadworks\Afptc\Model\Rule\Discount\Calculator\ByFixedPrice</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Actions\Items\Children\Validator">
+        <arguments>
+            <argument name="validationByTypeMap" xsi:type="array">
+                <item name="bundle" xsi:type="boolean">false</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="common" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Common</item>
+                <item name="image" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Image</item>
+                <item name="price" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Price</item>
+                <item name="option" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Option</item>
+                <item name="toggleOptionSettings" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\ToggleOptionSettings</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="date" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\Date</item>
+                <item name="website" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\Website</item>
+                <item name="cartCondition" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\CartCondition</item>
+                <item name="promoProduct" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\PromoProduct</item>
+                <item name="image" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\Image</item>
+                <item name="onSaleLabelId" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\OnSaleLabelId</item>
+                <item name="useDefault" xsi:type="object">Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\UseDefault</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Cart\Item\ExtensionAttributes\Processor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="ruleConfig" xsi:type="object">Aheadworks\Afptc\Model\Cart\Item\ExtensionAttributes\Processor\RuleConfig</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Processor\Pool">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="popup" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Processor\Popup</item>
+                <item name="autoAdd" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Processor\AutoAdd</item>
+                <item name="discount" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Processor\Discount</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Option\ConfigurationPool">
+        <arguments>
+            <argument name="configurations" xsi:type="array">
+                <item name="configurable" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Option\Configuration\Configurable</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Option\ConfigurationPool">
+        <arguments>
+            <argument name="configurations" xsi:type="array">
+                <item name="configurable" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Option\Configuration\Configurable</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Price">
+        <arguments>
+            <argument name="priceProviders" xsi:type="array">
+                <item name="price" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Price\Price</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="PromoOfferRenderMapper" type="Magento\Framework\EntityManager\CompositeMapper">
+        <arguments>
+            <argument name="mappers" xsi:type="array">
+                <item name="promoOfferMapper" xsi:type="object">Aheadworks\Afptc\Model\PromoOffer\Render\Mapper</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\EntityManager\MapperPool">
+        <arguments>
+            <argument name="mappers" xsi:type="array">
+                <item name="Aheadworks\Afptc\Api\Data\PromoOfferRenderInterface" xsi:type="string">PromoOfferRenderMapper</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\Pool">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="buy_x_get_y" xsi:type="object">Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\BuyXGetY</item>
+                <item name="spend_x_get_y" xsi:type="object">Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\SpendXGetY</item>
+                <item name="coupon" xsi:type="object">Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\Coupon</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\StockProductPool">
+        <arguments>
+            <argument name="stockProducts" xsi:type="array">
+                <item name="default" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\StockProduct\DefaultStock</item>
+                <item name="configurable" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\StockProduct\Configurable</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\ScenarioPool">
+        <arguments>
+            <argument name="scenarios" xsi:type="array">
+                <item name="buy_x_get_y" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\Scenario\BuyXGetY</item>
+                <item name="spend_x_get_y" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\Scenario\SpendXGetY</item>
+                <item name="coupon" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Resolver\Qty\Scenario\Coupon</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Report">
+        <arguments>
+            <argument name="reports" xsi:type="array">
+                <item name="rule" xsi:type="object">Aheadworks\Afptc\Model\Report\Rule</item>
+                <item name="order" xsi:type="object">Aheadworks\Afptc\Model\Report\Order</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="count" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\Count</item>
+                <item name="headerText" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\HeaderText</item>
+                <item name="quantityNotice" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\QuantityNotice</item>
+                <item name="PopupVisibilityRoutes" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\PopupVisibilityRoutes</item>
+                <item name="coupon" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Processor\Coupon</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\PromoOffer\Quote\Address\Processor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="cartAttribute" xsi:type="object">Aheadworks\Afptc\Model\Rule\PromoOffer\Quote\Address\Processor\CartAttribute</item>
+                <item name="item" xsi:type="object">Aheadworks\Afptc\Model\Rule\PromoOffer\Quote\Address\Processor\Item</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\PromoOffer\Quote\Address\Processor\CartAttribute">
+        <arguments>
+            <argument name="attributes" xsi:type="array">
+                <item name="base_subtotal_excl_promo" xsi:type="string">base_row_total</item>
+                <item name="total_qty" xsi:type="string">qty</item>
+                <item name="weight" xsi:type="string">weight</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Indexer\Rule\Action\DataChecker\ExcludeDataFilter">
+        <arguments>
+            <argument name="fields" xsi:type="array">
+                <item name="name" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::NAME</item>
+                <item name="description" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::DESCRIPTION</item>
+                <item name="ruleProcessing" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::STOP_RULES_PROCESSING</item>
+                <item name="stockOffer" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::IN_STOCK_OFFER_ONLY</item>
+                <item name="howToOffer" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::HOW_TO_OFFER</item>
+                <item name="popupHeaderText" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::POPUP_HEADER_TEXT</item>
+                <item name="storeId" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::STORE_ID</item>
+                <item name="promoProducts" xsi:type="const">Aheadworks\Afptc\Api\Data\RuleInterface::PROMO_PRODUCTS</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Actions\Items\Validator\Option\Processor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="configurable" xsi:type="object">Aheadworks\Afptc\Model\Rule\Converter\ToMetadataRule\Actions\Items\Validator\Option\Processor\Configurable</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Block\Adminhtml\Rule\Edit\Tab\Conditions\TypeResolver">
+        <arguments>
+            <argument name="typeMapping" xsi:type="array">
+                <item name="buy_x" xsi:type="array">
+                    <item name="0" xsi:type="const">Aheadworks\Afptc\Model\Source\Rule\Scenario::BUY_X_GET_Y</item>
+                </item>
+                <item name="complete" xsi:type="array">
+                    <item name="0" xsi:type="const">Aheadworks\Afptc\Model\Source\Rule\Scenario::SPEND_X_GET_Y</item>
+                    <item name="1" xsi:type="const">Aheadworks\Afptc\Model\Source\Rule\Scenario::COUPON</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Controller\Adminhtml\Rule\PostDataProcessor\CartCondition">
+        <arguments>
+            <argument name="scenarioConditionMap" xsi:type="array">
+                <item name="buy_x_get_y" xsi:type="const">Aheadworks\Afptc\Model\Rule\Condition\Cart\Rule\BuyXGetY::CONDITION_PREFIX</item>
+                <item name="spend_x_get_y" xsi:type="const">Aheadworks\Afptc\Model\Rule\Condition\Cart\Rule\Complete::CONDITION_PREFIX</item>
+                <item name="coupon" xsi:type="const">Aheadworks\Afptc\Model\Rule\Condition\Cart\Rule\Complete::CONDITION_PREFIX</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\BuyXGetY" type="Aheadworks\Afptc\Model\Rule\PromoOffer\Validator\AbstractValidator"/>
+    <type name="Magento\Quote\Model\Quote">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\QuotePlugin" />
+    </type>
+    <type name="Magento\Quote\Model\ResourceModel\Quote">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\ResourceModel\QuotePlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\CartItemPersister">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\Item\CartItemPersisterPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\Processor">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\Item\ProcessorPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\CartItemOptionsProcessor">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\Item\CartItemOptionsProcessorPlugin" />
+    </type>
+    <type name="Magento\Tax\Model\Sales\Total\Quote\CommonTaxCollector">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Tax\Total\Quote\CommonTaxCollectorPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\ConvertQuoteItemToOrderItemPlugin" />
+    </type>
+    <type name="Magento\Tax\Block\Item\Price\Renderer">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\Tax\Item\PriceRendererPlugin" />
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Items\Renderer\DefaultRenderer">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\Items\DefaultRendererPlugin" />
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\View\Items">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\Sales\Order\ItemsPlugin" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\ListProductPlugin" />
+    </type>
+    <type name="Magento\CatalogSearch\Block\SearchResult\ListProduct">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\ListProductPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\CouponPost">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Controller\CartCouponPostPlugin" />
+    </type>
+    <type name="Magento\Checkout\Controller\Cart\Configure">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Controller\CartConfigureItemPlugin" />
+    </type>
+    <type name="Magento\Quote\Api\CouponManagementInterface">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\CouponManagementPlugin" />
+    </type>
+    <type name="Magento\Quote\Model\Quote\Config">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\ConfigProductAttributes"/>
+    </type>
+    <type name="Magento\Quote\Model\Cart\Totals\ItemConverter">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Cart\Totals\ItemConverterPlugin"/>
+    </type>
+    <type name="Magento\Quote\Api\CartRepositoryInterface">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Service\QuoteRepositoryPlugin"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Item">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Quote\ItemPlugin"/>
+    </type>
+    <type name="Magento\CatalogInventory\Model\Indexer\Stock\Action\Rows">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Indexer\Stock\UpdateRowsPlugin" />
+    </type>
+    <type name="Magento\CatalogInventory\Model\Indexer\Stock\Action\Row">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Indexer\Stock\UpdateRowPlugin" />
+    </type>
+    <type name="Aheadworks\OnSale\Model\ResourceModel\Rule">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\ResourceModel\ThirdPartyModule\OnSale\RulePlugin" />
+    </type>
+    <virtualType name="KpAwAfptcPromoDiscountOrderLine" type="Aheadworks\Afptc\Model\Checkout\Klarna\Orderline\Afptc">
+        <arguments>
+            <argument name="klarnaConfig" xsi:type="object">KpKlarnaConfig</argument>
+        </arguments>
+    </virtualType>
+</config>

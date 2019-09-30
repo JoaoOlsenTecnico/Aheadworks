@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <aw_afptc>
+            <general>
+                <default_offer_popup_title>Your offers</default_offer_popup_title>
+                <is_option_block_hidden>0</is_option_block_hidden>
+                <where_to_display_popup_type>default</where_to_display_popup_type>
+                <subtotal_validation_type>0</subtotal_validation_type>
+            </general>
+        </aw_afptc>
+    </default>
+</config>

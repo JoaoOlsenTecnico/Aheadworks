@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <media>
+        <images module="Aheadworks_Afptc">
+            <image id="product_list_product_image" type="small_image">
+                <width>120</width>
+                <height>120</height>
+            </image>
+            <image id="product_list_popup_image" type="small_image">
+                <width>250</width>
+                <height>250</height>
+            </image>
+            <image id="product_page_product_image" type="small_image">
+                <width>120</width>
+                <height>120</height>
+            </image>
+            <image id="product_page_popup_image" type="small_image">
+                <width>250</width>
+                <height>250</height>
+            </image>
+        </images>
+    </media>
+    <vars module="Aheadworks_Afptc">
+        <var name="promo_info">
+            <var name="placement">
+                <var name="product_list">
+                    <var name="selectorToMove">.price-box</var> <!-- CSS selector used to move element to-->
+                    <var name="actionToInsert">before</var> <!-- Insert element to position related to selector above -->
+                    <var name="additionalClasses">listing-promo-offer</var> <!-- Additional classes for element -->
+                    <var name="parentSelector">li</var> <!-- Parent container (used for product listing) -->
+                </var>
+                <var name="product_page">
+                    <var name="selectorToMove">.product-info-price</var>
+                    <var name="actionToInsert">after</var>
+                    <var name="additionalClasses">product-promo-offer</var>
+                </var>
+            </var>
+        </var>
+    </vars>
+</view>

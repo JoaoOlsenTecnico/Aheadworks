@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Afptc\Block\Cart\Promo\Item\Info */
+$qtyLabel = $block->getQtyLabel()
+?>
+<?php if ($qtyLabel): ?>
+    <div class="aw-afptc__promo-item-qty-label">
+        <span><?= /* @noEscape */ $block->escapeHtml($qtyLabel) ?></span>
+    </div>
+<?php endif; ?>

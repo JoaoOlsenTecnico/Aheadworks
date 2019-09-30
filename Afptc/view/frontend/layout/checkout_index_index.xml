@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.root">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="checkout" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="sidebar" xsi:type="array">
+                                    <item name="children" xsi:type="array">
+                                        <item name="afptc_observer" xsi:type="array">
+                                            <item name="component" xsi:type="string">Aheadworks_Afptc/js/view/checkout/sidebar/afptc-update-observer</item>
+                                        </item>
+                                        <item name="summary" xsi:type="array">
+                                            <item name="children" xsi:type="array">
+                                                <item name="totals" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="before_grandtotal" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="aw-afptc" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/view/checkout/summary/afptc</item>
+                                                                    <item name="config" xsi:type="array">
+                                                                        <item name="title" xsi:type="string" translate="true">Promo Discount</item>
+                                                                    </item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                                <item name="cart_items" xsi:type="array">
+                                                    <item name="children" xsi:type="array">
+                                                        <item name="details" xsi:type="array">
+                                                            <item name="children" xsi:type="array">
+                                                                <item name="aw-afptc-info" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/view/checkout/summary/item/details/afptc</item>
+                                                                    <item name="displayArea" xsi:type="string">after_details</item>
+                                                                </item>
+                                                                <item name="thumbnail" xsi:type="array">
+                                                                    <item name="component" xsi:type="string">Aheadworks_Afptc/js/view/checkout/summary/item/details/thumbnail</item>
+                                                                </item>
+                                                            </item>
+                                                        </item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+    </body>
+</page>

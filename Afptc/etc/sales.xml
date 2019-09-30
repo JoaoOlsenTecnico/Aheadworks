@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/sales.xsd">
+    <section name="quote">
+        <group name="totals">
+            <item name="aw_afptc" instance="Aheadworks\Afptc\Model\Total\Quote\Afptc" sort_order="449"/>
+        </group>
+    </section>
+    <section name="order_invoice">
+        <group name="totals">
+            <item name="aw_afptc" instance="Aheadworks\Afptc\Model\Total\Invoice\Afptc" sort_order="450"/>
+        </group>
+    </section>
+    <section name="order_creditmemo">
+        <group name="totals">
+            <item name="aw_afptc" instance="Aheadworks\Afptc\Model\Total\Creditmemo\Afptc" sort_order="449"/>
+        </group>
+    </section>
+</config>

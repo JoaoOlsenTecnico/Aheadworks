@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
+    <extension_attributes for="Magento\Sales\Api\Data\CreditmemoInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\CreditmemoItemInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\InvoiceInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\InvoiceItemInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+        <attribute code="aw_afptc_invoiced" type="float" />
+        <attribute code="base_aw_afptc_invoiced" type="float" />
+        <attribute code="aw_afptc_refunded" type="float" />
+        <attribute code="base_aw_afptc_refunded" type="float" />
+        <attribute code="aw_afptc_uses_coupon" type="int" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\OrderItemInterface">
+        <attribute code="aw_afptc_rule_ids" type="string" />
+        <attribute code="aw_afptc_qty" type="float" />
+        <attribute code="aw_afptc_qty_invoiced" type="float" />
+        <attribute code="aw_afptc_qty_refunded" type="float" />
+        <attribute code="aw_afptc_is_promo" type="int" />
+        <attribute code="aw_afptc_percent" type="float" />
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+        <attribute code="aw_afptc_invoiced" type="float" />
+        <attribute code="base_aw_afptc_invoiced" type="float" />
+        <attribute code="aw_afptc_refunded" type="float" />
+        <attribute code="base_aw_afptc_refunded" type="float" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Quote\Api\Data\CartInterface">
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+        <attribute code="aw_afptc_uses_coupon" type="int" />
+    </extension_attributes>
+    <extension_attributes for="Magento\Quote\Api\Data\CartItemInterface">
+        <attribute code="aw_afptc_rule_ids" type="string" />
+        <attribute code="aw_afptc_qty" type="float" />
+        <attribute code="aw_afptc_is_promo" type="int" />
+        <attribute code="aw_unique_id" type="string" />
+        <attribute code="aw_afptc_percent" type="float" />
+        <attribute code="aw_afptc_amount" type="float" />
+        <attribute code="base_aw_afptc_amount" type="float" />
+        <attribute code="aw_afptc_rules" type="Aheadworks\Afptc\Api\Data\CartItemRuleInterface[]"/>
+        <attribute code="aw_afptc_rules_request" type="Aheadworks\Afptc\Api\Data\CartItemRuleInterface[]"/>
+    </extension_attributes>
+    <extension_attributes for="Magento\Quote\Api\Data\TotalsItemInterface">
+        <attribute code="aw_afptc_qty_label" type="string" />
+        <attribute code="aw_afptc_image_data" type="Aheadworks\Afptc\Api\Data\CheckoutSummaryProductImageInterface" />
+    </extension_attributes>
+</config>

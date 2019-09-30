@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\Composite">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="promoProducts" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PromoProducts</item>
+                <item name="discountAmount" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\DiscountAmount</item>
+                <item name="image" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\Image</item>
+                <item name="thirdPartyModule" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\ThirdPartyModule</item>
+                <item name="promoSettings" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PromoSettings</item>
+                <item name="popupSettings" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PopupSettings</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PromoProducts\OptionProcessor">
+        <arguments>
+            <argument name="processors" xsi:type="array">
+                <item name="configurable" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PromoProducts\ProductType\Configurable</item>
+                <item name="default" xsi:type="object">Aheadworks\Afptc\Ui\DataProvider\Rule\FormDataProcessor\PromoProducts\ProductType\DefaultType</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="backendImageProcessor" type="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Image">
+        <arguments>
+            <argument name="imageId" xsi:type="string">product_listing_thumbnail_preview</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Aheadworks\Afptc\Ui\DataProvider\PromoOffer\RenderList\Product\Processor\Image" type="backendImageProcessor" />
+    <type name="Magento\Quote\Api\CartRepositoryInterface">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Model\Service\BackendQuoteRepositoryPlugin"/>
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Items\Grid">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\Adminhtml\Order\Create\ConfigureButtonPlugin" />
+    </type>
+</config>

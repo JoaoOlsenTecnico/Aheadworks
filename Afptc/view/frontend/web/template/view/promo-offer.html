@@ -1,0 +1,8 @@
+<span class="aw-afptc__desc-text">
+    <span data-bind="text: count" />
+    <span translate="'free item(s) remaining'" />
+</span>
+<button class="action no-display"
+        data-bind="attr: {title: $t('Promo Offer')}, click: openModal, css: {'no-display': !isDisplay()}">
+    <span class="aw-afptc__counter" data-bind="text: count"/>
+</button>

@@ -1,0 +1,59 @@
+<li class="uk-slide-item"
+     data-bind="blockLoader: isLoading,
+                attr: {id: getUid()},
+                css: { 'aw-afptc__product-item-disabled' : isDisabled() == true }">
+
+    <div class="product-item">
+        <label class="aw-afptc-checkbox">
+            <span class="aw-afptc-description-label" translate="'Check Product'" />
+            <input type="checkbox"
+                   class="aw-afptc-input-checkbox"
+                   data-bind="
+                        checked: checked,
+                        event: { change: $parent.productChecked.bind($parent) }"
+            >
+            <span class="aw-afptc-checkmark"></span>
+        </label>
+
+        <div class="product-item-photo">
+            <!-- ko foreach: getRegion('image') -->
+            <!-- ko template: {name: getTemplate(), data: $parent.product().image} --><!-- /ko -->
+            <!-- /ko -->
+        </div>
+        <div class="product-item-name">
+            <a data-bind="attr: {href: product().url, title: product().name}"
+               tabindex="0"
+               class="link-name">
+                <span html="product().name" />
+            </a>
+        </div>
+
+        <!-- ko repeat: {foreach: getDataForRenderingPrice(), item: '$row'} -->
+        <div class="price-box-wrap">
+            <each args="getRegion('price')" render=""/>
+        </div>
+        <!-- /ko -->
+
+        <div class="qty-inp-block" visible="isQtyVisible()">
+            <button type="button" click="decreaseQty" class="button-qty btn-left">
+                <span translate="'-'"></span>
+            </button>
+            <input type="number" title="Qty" ko-value="_qty" class="required-entry input-text qty"  aria-label="Qty" />
+            <button type="button" click="increaseQty" class="button-qty btn-right">
+                <span translate="'+'"></span>
+            </button>
+        </div>
+        <div>
+            <div class="aw-afptc-toggle-option"
+                 tabindex="0"
+                 role="button"
+                 aria-label="toggleButton"
+                 if="product().toggle_option_link_text">
+                <span text="product().toggle_option_link_text" click="toggleOptionVisibility.bind($data)" />
+            </div>
+        </div>
+        <div class="aw-afptc-option-wrapper" visible="isOptionVisible">
+            <each args="getRegion('options')" render=""/>
+        </div>
+    </div>
+</li>

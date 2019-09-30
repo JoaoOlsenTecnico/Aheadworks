@@ -1,0 +1,11 @@
+<button if="$record().data().type == 'configurable'"
+        class="action-delete"
+        attr="{'data-action': 'configure_row'}"
+        data-bind="
+            click: $data.configureRecord.bind($data, $record().index, $record().recordId),
+            attr: {
+                title: $parent.configureButtonLabel
+            }
+        ">
+    <span translate="$parent.configureButtonLabel"></span>
+</button>

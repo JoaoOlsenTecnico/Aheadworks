@@ -1,0 +1,55 @@
+@import 'module/_grid.less';
+@import 'module/_form.less';
+@import 'module/_components';
+@import 'module/_page-menu.less';
+@import 'module/_variables.less';
+@import 'module/cart/promo/item/_info.less';
+@import 'module/components/_promo-products.less';
+@import 'module/components/promo-products/_product.less';
+@import 'module/uikit/_uikit.less';
+@import 'module/_main.less';
+
+//
+//  Common
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .aw-afptc {
+    &__main-popup {
+      .modal-content {
+        .item-options {
+          .admin__field-label {
+            span:after {
+              content: none;
+            }
+          }
+        }
+
+        .price-box {
+          .special-price {
+            .price-label {
+              display: none;
+            }
+          }
+
+          .price {
+            font-weight: 700;
+          }
+        }
+
+        .old-price {
+          .price {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+
+  .product-configure-block
+  {
+    button.promo.disabled {
+      display: inline-block;
+    }
+  }
+}

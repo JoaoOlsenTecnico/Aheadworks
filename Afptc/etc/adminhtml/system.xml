@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aheadworks" translate="label" sortOrder="300">
+            <label>Aheadworks Extensions</label>
+        </tab>
+        <section id="aw_afptc" translate="label" type="text" sortOrder="180" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Add Free Product to Cart</label>
+            <tab>aheadworks</tab>
+            <resource>Aheadworks_Afptc::config_aw_afptc</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="default_offer_popup_title" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Default Title Of Popup</label>
+                    <comment>Will be displayed if a customer is eligible for several promo offers at a time</comment>
+                </field>
+                <field id="is_option_block_hidden" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Hide options of configurable products</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="where_to_display_popup_type" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Where to Display Promo Popup</label>
+                    <source_model>Aheadworks\Afptc\Model\Source\Rule\PromoOffer\PageType</source_model>
+                </field>
+                <field id="subtotal_validation_type" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Validate subtotal</label>
+                    <source_model>Aheadworks\Afptc\Model\Source\Rule\Validation\PriceType</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,22 @@
+<?php
+/**
+ * Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Aheadworks\Afptc\Block\Promo\Renderer */
+?>
+<?php
+$promoInfoBlock = $block->getPromoInfoBlock();
+?>
+<?php if ($promoInfoBlock): ?>
+    <div class="aw-afptc__promo-section"
+         style="display: none;"
+         data-mage-init='{
+                 "awAfptcPromoRenderer": <?= /* @noEscape */ $block->getPromoConfig() ?>
+             }'>
+        <?= /* @noEscape */ $block->createPopup($promoInfoBlock) ?>
+    </div>
+<?php endif; ?>

@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <action name="checkout/cart/add">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/cart/updatePost">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/cart/updateItemOptions">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/onepage/saveOrder">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/sidebar/removeItem">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="checkout/sidebar/updateItemQty">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/carts/*/payment-information">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/payment-information">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/awOsc/carts/*/cart-items">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/awOsc/guest-carts/*/cart-items">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/carts/*/coupons/*">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/coupons/*">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/carts/*/coupons">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/coupons">
+        <section name="aw-afptc-promo"/>
+    </action>
+    <action name="aw_afptc/product/addToCart">
+        <section name="aw-afptc-promo"/>
+        <section name="cart"/>
+    </action>
+</config>

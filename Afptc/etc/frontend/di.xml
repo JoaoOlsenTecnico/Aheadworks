@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+* Copyright 2019 aheadWorks. All rights reserved.
+See LICENSE.txt for license details.
+*/
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+        <arguments>
+            <argument name="sectionSourceMap" xsi:type="array">
+                <item name="aw-afptc-promo" xsi:type="string">Aheadworks\Afptc\CustomerData\PromoOffer</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Item\Renderer">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\Block\Cart\Item\RendererPlugin" />
+    </type>
+    <type name="Magento\Checkout\CustomerData\ItemPoolInterface">
+        <plugin name="awAfptc" type="Aheadworks\Afptc\Plugin\CustomerData\ItemPoolPlugin" />
+    </type>
+    <type name="Aheadworks\Afptc\Model\PromoOffer\VisibilityRouteList">
+        <arguments>
+            <argument name="types" xsi:type="array">
+                <item name="checkout" xsi:type="array">
+                    <item name="native_checkout" xsi:type="string">checkout</item>
+                    <item name="aw_osc" xsi:type="string">onestepcheckout</item>
+                </item>
+                <item name="default" xsi:type="array">
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>
